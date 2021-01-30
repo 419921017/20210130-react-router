@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root" style="border: 3px solid red; width: 300px;height: 300px;"></div>
+  <button onclick="push('/a')">/a</button>
+  <button onclick="push('/b')">/b</button>
+  <button onclick="push('/c')">/c</button>
+  <script>
+    const container = document.querySelector('#root')
+    
+    window.onpopstate = function(event) {
+      console.log(event);
+      container.innerHTML = event.state.to
+    }
+    window.onpushstate = function(state, title, path) {
+      console.log(event)
+      container.innerHTML = state.to
+    }
+
+    let oldPush = window.history.pushState
+
+    window.history.pushState = function(state, title, path) {
+      window.onpushstate( state, title, path)
+      oldPush.call(window.history, state, title, path)
+    }
+
+    function push(to) {
+      window.history.pushState({to}, null, to)
+    }
+
+
+  </script>
+</body>
+</html>
