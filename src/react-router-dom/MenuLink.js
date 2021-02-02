@@ -7,8 +7,8 @@
  * @LastEditTime: 2021-02-01 21:41:31
  */
 
-import React from "react";
-import { Route, Link } from "react-router";
+import React from 'react';
+import { Route, Link } from './index';
 // 路由渲染内容有3种
 // component render只有在路径匹配的时候再渲染
 // children不管路径匹配不匹配都渲染
@@ -19,7 +19,7 @@ function MenuLink(props) {
       path={to}
       exact={exact}
       children={(props) => (
-        <li className={props.match ? "active" : ""}>
+        <li className={props.match ? 'active' : ''}>
           <Link to={to} exact={exact}>
             {children}
           </Link>

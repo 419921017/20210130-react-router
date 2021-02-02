@@ -6,8 +6,8 @@
  * @LastEditors: power_840
  * @LastEditTime: 2021-02-01 21:32:03
  */
-import React from "react";
-import { Route, Redirect } from "react-router";
+import React from 'react';
+import { Route, Redirect } from './../react-router-dom';
 
 function Protected({ component: Component, ...rest }) {
   return (
@@ -19,7 +19,7 @@ function Protected({ component: Component, ...rest }) {
         ) : (
           <Redirect
             to={{
-              pathname: "/login",
+              pathname: '/login',
               state: { from: props.location.pathname },
             }}
           />
